@@ -1,0 +1,22 @@
+[package]
+name = "overlord"
+version = "0.1.0"
+authors = ["Eason Gao <kaoimin@qq.com>"]
+edition = "2018"
+license = "MIT"
+include = ["Cargo.toml", "src/*", "README.md", "LICENSE"]
+readme = "README.md"
+repository = "https://github.com/KaoImin/log-json"
+
+[dependencies]
+creep = "0.1"
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[dev-dependencies]
+env_logger = "0.7"
+
+[features]
+default = []
+off = []

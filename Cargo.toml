@@ -1,5 +1,5 @@
 [package]
-name = "overlord"
+name = "log-json"
 version = "0.1.0"
 authors = ["Eason Gao <kaoimin@qq.com>"]
 edition = "2018"

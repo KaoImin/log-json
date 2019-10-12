@@ -1,4 +1,13 @@
 //!
+//! ```rust
+//! use log_json::log_json;
+//! use serde_json::json;
+//!
+//! fn main() {
+//!     let info = json!({"ID": 0});
+//!     log_json(None, info);  
+//! }
+//! ```
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -34,7 +43,7 @@ mod test {
     fn test_log() {
         env_logger::init();
 
-        let ctx  =json!({"name": "creep".to_string()});
+        let ctx = json!({"name": "creep".to_string()});
         let log = json!({"epoch_id": 0});
         log_json(Some(ctx), log);
     }

@@ -5,17 +5,17 @@
 //!
 //! fn main() {
 //!     let info = json!({"ID": 0});
-//!     log_json(None, info);  
+//!     log_json("Metricsl", None, info);  
 //! }
 //! ```
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use log::trace;
+use log::info;
 use serde_json::{json, Value};
 
 /// Log the context message and a json value in json format at the trace level.
-pub fn log_json(ctx_value: Option<Value>, info_value: Value) {
+pub fn log_json(log_target: &str, ctx_value: Option<Value>, info_value: Value) {
     #[cfg(feature = "off")]
     return;
 
@@ -24,7 +24,7 @@ pub fn log_json(ctx_value: Option<Value>, info_value: Value) {
     } else {
         json!({"info": info_value, "timestamp": sys_now()})
     };
-    trace!("{:?}", output);
+    info!(target: log_target, "{}", output);
 }
 
 fn sys_now() -> u64 {
@@ -45,6 +45,6 @@ mod test {
 
         let ctx = json!({"name": "creep".to_string()});
         let log = json!({"epoch_id": 0});
-        log_json(Some(ctx), log);
+        log_json("Metricsl", Some(ctx), log);
     }
 }

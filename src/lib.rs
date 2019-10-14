@@ -11,7 +11,7 @@
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use log::info;
+use log::trace;
 use serde_json::{json, Value};
 
 /// Log the context message and a json value in json format at the trace level.
@@ -24,7 +24,7 @@ pub fn log_json(log_target: &str, ctx_value: Option<Value>, info_value: Value) {
     } else {
         json!({"info": info_value, "timestamp": sys_now()})
     };
-    info!(target: log_target, "{}", output);
+    trace!(target: log_target, "{}", output);
 }
 
 fn sys_now() -> u64 {
